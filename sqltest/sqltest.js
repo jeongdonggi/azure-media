@@ -1,5 +1,7 @@
 const { Connection, Request } = require("tedious");
 
+var a = ""
+var b = ""
 // Create connection to database
 const config = {
   authentication: {
@@ -70,6 +72,10 @@ function queryDatabase() {
         console.error(err.message);
       } else {
         console.log(`${rowCount} row(s) returned`);
+
+
+       
+        
         connection.close();
       }
     }
@@ -78,16 +84,18 @@ function queryDatabase() {
   request.on("row", columns => {
     columns.forEach(column => {
       console.log("%s\t%s", column.metadata.colName, column.value);
-      if (column.metadata.colName == "id"){
-        var i = column.value
+      if (column.metadata.colName == "id"){  
+        a = column.value
       }
       else{
-        var ps = column.value
+        b = column.value
       }
     });
+    const i = a
+    const ps = b
+    console.log(i)
+    console.log(ps)
+    module.exports = { i, ps}
   });
-
   connection.execSql(request);
 }
-
-export{i,ps}

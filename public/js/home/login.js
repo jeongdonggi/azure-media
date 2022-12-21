@@ -1,6 +1,4 @@
 "use strict"
-//import i from "./sqltest.js"
-//import ps from "./sqltest.js"
 
 const id = document.querySelector("#id")
 const password = document.querySelector("#password")
@@ -17,9 +15,7 @@ function login(){
         id: id.value,
         password: password.value,
     };
-    //console.log(req , JSON.stringify(req)) //JSON은 문자열
     if (i == id & ps == password){
         console.log("들어옴")
-        //router.get('/video', ctrl.output.video)
     }
 }
